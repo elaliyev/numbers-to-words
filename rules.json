@@ -1,0 +1,187 @@
+{
+  "common_def": {
+    "en": {
+      "splitter": " ",
+      "thousand": "thousand ",
+      "million": " million ",
+      "billion": "billion "
+
+    },
+    "ru": {
+      "splitter": " ",
+      "thousand": "tishachi ",
+      "million": "million",
+      "billion": "milyard"
+    },
+    "az": {
+      "splitter": " ",
+      "thousand": "min ",
+      "million": "milyon ",
+      "billion": "milyard "
+    }
+  },
+  "tens_rules": {
+    "en": {
+      "rule": "#tens__#ones",
+      "exceptions": {
+        "11": "eleven",
+        "12": "twelve",
+        "13": "thirteen",
+        "14": "fourteen",
+        "15": "fifteen",
+        "16": "sixteen",
+        "17": "seventeen",
+        "18": "eighteen",
+        "19": "nineteen"
+      }
+    },
+    "ru": {
+      "rule": "#ones_nadcat"
+    },
+    "az": {
+      "rule": "#tens__#ones"
+    }
+  },
+  "hundreds_rules": {
+    "en": {
+      "rule": "#ones__hundred"
+    },
+    "ru": {
+      "rule": "#ones_sot",
+      "exceptions": {
+        "100" : "sot",
+        "200" : "dvuxsot",
+        "300" : "trixsot",
+        "400": "chetirexsot"
+      }
+    },
+    "az": {
+      "rule": "#ones__yuz",
+      "exceptions": {
+        "100": "yuz"
+      }
+    }
+  },
+  "thousands_rules": {
+    "en": {
+      "rule": "#ones__thousand"
+    },
+    "ru": {
+      "rule": "#ones_tishachi",
+      "exceptions": {
+        "1000" : "tishaci",
+        "2000" : "dvuxtishaci"
+      }
+    },
+    "az": {
+      "rule": "#ones__min",
+      "exceptions": {
+        "1000": "min"
+      }
+    }
+  },
+  "millions_rules": {
+    "en": {
+      "rule": "#ones__million"
+    },
+    "ru": {
+      "rule": "#ones_milyon"
+    },
+    "az": {
+      "rule": "#ones__milyon"
+    }
+  },
+  "billions_rules": {
+    "en": {
+      "rule": "#ones__billion"
+    },
+    "ru": {
+      "rule": "#ones_milyard"
+    },
+    "az": {
+      "rule": "#ones__milyard"
+    }
+  },
+
+  "zero": {
+    "en": {
+      "0": "zero"
+    },
+    "ru": {
+      "0": "nol"
+    },
+    "az": {
+      "0": "sifir"
+    }
+  },
+  "ones" : {
+    "en": {
+      "1": "one",
+      "2": "two",
+      "3": "three",
+      "4": "four",
+      "5": "five",
+      "6": "six",
+      "7": "seven",
+      "8": "eight",
+      "9": "nine"
+    },
+    "ru": {
+      "1": "odin",
+      "2": "dva",
+      "3": "tri",
+      "4": "cetire",
+      "5": "pyat",
+      "6": "shest",
+      "7": "sem",
+      "8": "vosem",
+      "9": "devit"
+    },
+    "az": {
+      "1": "bir",
+      "2": "iki",
+      "3": "uc",
+      "4": "dord",
+      "5": "bes",
+      "6": "alti",
+      "7": "yeddi",
+      "8": "sekkiz",
+      "9": "doqquz"
+    }
+  },
+  "tens": {
+    "en": {
+      "10": "ten",
+      "20": "twenty",
+      "30": "thirty",
+      "40": "forty",
+      "50": "fifty",
+      "60": "sixty",
+      "70": "seventy",
+      "80": "eighty",
+      "90": "ninety"
+    },
+    "ru": {
+      "10": "desit",
+      "20": "dvadcat",
+      "30": "tridcat",
+      "40": "sorok",
+      "50": "pyadesat",
+      "60": "shesdisat",
+      "70": "semdesat",
+      "80": "vosemdesat",
+      "90": "devitdesat"
+    },
+    "az": {
+      "10": "on",
+      "20": "iyirmi",
+      "30": "otuz",
+      "40": "qirx",
+      "50": "elli",
+      "60": "altmis",
+      "70": "yetmis",
+      "80": "seksen",
+      "90": "dogsan"
+    }
+  }
+}
