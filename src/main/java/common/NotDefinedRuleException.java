@@ -1,17 +1,9 @@
 package common;
 
-public class NotDefinedRuleException extends Exception{
-    private String message;
-    private int digitsCount;
+import static common.Message.NOT_DEFINED;
 
-    public NotDefinedRuleException(String message, int digitsCount){
-        this.message = message;
-        this.digitsCount = digitsCount;
+public class NotDefinedRuleException extends Throwable {
+    public NotDefinedRuleException(String rule, int digit) {
+        super(" rule is not defined for the " + digit + " digits count");
     }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
-
 }

@@ -1,19 +1,23 @@
 {
   "common_def": {
     "en": {
+      "negative_sign": "negative",
       "splitter": " ",
-      "thousand": "thousand ",
-      "million": " million ",
-      "billion": "billion "
+      "thousand": "thousand",
+      "million": " million",
+      "billion": " billion",
+      "splitter_ones_tens": " and "
 
     },
     "ru": {
+      "negative_sign": "otricatelniy",
       "splitter": " ",
       "thousand": "tishachi ",
       "million": "million",
       "billion": "milyard"
     },
     "az": {
+      "negative_sign": "menfi",
       "splitter": " ",
       "thousand": "min ",
       "million": "milyon ",
@@ -22,7 +26,7 @@
   },
   "tens_rules": {
     "en": {
-      "rule": "#tens__#ones",
+      "rule": "#tens$SPACE$#ones",
       "exceptions": {
         "11": "eleven",
         "12": "twelve",
@@ -36,18 +40,18 @@
       }
     },
     "ru": {
-      "rule": "#ones_nadcat"
+      "rule": "#ones$CONCAT$nadcat"
     },
     "az": {
-      "rule": "#tens__#ones"
+      "rule": "#tens$SPACE$#ones"
     }
   },
   "hundreds_rules": {
     "en": {
-      "rule": "#ones__hundred"
+      "rule": "#ones$SPACE$hundred"
     },
     "ru": {
-      "rule": "#ones_sot",
+      "rule": "#ones$CONCAT$sot",
       "exceptions": {
         "100" : "sot",
         "200" : "dvuxsot",
@@ -56,7 +60,7 @@
       }
     },
     "az": {
-      "rule": "#ones__yuz",
+      "rule": "#ones$SPACE$yuz",
       "exceptions": {
         "100": "yuz"
       }
@@ -64,17 +68,17 @@
   },
   "thousands_rules": {
     "en": {
-      "rule": "#ones__thousand"
+      "rule": "#ones$SPACE$thousand"
     },
     "ru": {
-      "rule": "#ones_tishachi",
+      "rule": "#ones$CONCAT$tishachi",
       "exceptions": {
         "1000" : "tishaci",
         "2000" : "dvuxtishaci"
       }
     },
     "az": {
-      "rule": "#ones__min",
+      "rule": "#ones$SPACE$min",
       "exceptions": {
         "1000": "min"
       }
@@ -82,24 +86,24 @@
   },
   "millions_rules": {
     "en": {
-      "rule": "#ones__million"
+      "rule": "#ones$SPACE$million"
     },
     "ru": {
-      "rule": "#ones_milyon"
+      "rule": "#ones$CONCAT$milyon"
     },
     "az": {
-      "rule": "#ones__milyon"
+      "rule": "#ones$SPACE$milyon"
     }
   },
   "billions_rules": {
     "en": {
-      "rule": "#ones__billion"
+      "rule": "#ones$SPACE$billion"
     },
     "ru": {
-      "rule": "#ones_milyard"
+      "rule": "#ones$CONCAT$milyard"
     },
     "az": {
-      "rule": "#ones__milyard"
+      "rule": "#ones$SPACE$milyard"
     }
   },
 

@@ -1,7 +1,6 @@
 package service;
 
-import common.Language;
-import common.NotDefinedRuleException;
+import common.*;
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,11 +13,10 @@ import java.io.IOException;
 
 import static common.JsonSchemaConstants.*;
 import static common.JsonSchemaConstants.COMMON_DEF;
-import static common.Message.NOT_DEFINED;
 
-public class IntegerTypeRule implements Rule {
+public class IntegerNumbersRule implements NumberRule {
 
-    Logger logger = LoggerFactory.getLogger(IntegerTypeRule.class);
+    Logger logger = LoggerFactory.getLogger(IntegerNumbersRule.class);
 
     private String language;
     private JSONObject rules;
@@ -47,10 +45,10 @@ public class IntegerTypeRule implements Rule {
     }
 
     @Override
-    public String convert(String number, StringBuilder letters) throws NotDefinedRuleException {
+    public String convert(String number, StringBuilder letters) throws LanguageNotDefinedException, NotDefinedRuleException {
         if (StringUtils.isEmpty(language)) {
             logger.error("The language is not defined");
-            throw new RuntimeException("The language is not defined");
+            throw new LanguageNotDefinedException("The " + language + " language is not defined");
         }
         if (rules == null) {
             logger.info("The rule file is not loaded properly");
@@ -58,6 +56,9 @@ public class IntegerTypeRule implements Rule {
         }
         loadRules();
 
+        if (number.startsWith("-")) {
+            letters.append(common.get(NEGATIVE_SIGN));
+        }
         if (number.length() == 1) {
             calculateForOneDigit(number, letters);
         } else {
@@ -68,10 +69,18 @@ public class IntegerTypeRule implements Rule {
     }
 
     private void loadRules() {
+
         zero = (JSONObject) ((JSONObject) rules.get(ZERO)).get(language);
         ones = (JSONObject) ((JSONObject) rules.get(ONES)).get(language);
         tens = (JSONObject) ((JSONObject) rules.get(TENS)).get(language);
         common = (JSONObject) ((JSONObject) rules.get(COMMON_DEF)).get(language);
+    }
+
+    private void checkJsonFileStructure(String field) throws JsonFileStructureException, LanguageNotSupportedException {
+        if (rules.get(field) == null)
+            throw new JsonFileStructureException(field + " is not defined");
+        if (((JSONObject) rules.get(field)).get(language) == null)
+            throw new LanguageNotSupportedException(language + " not defined for " + field + " field");
     }
 
     private void calculateForOneDigit(String number, StringBuilder letters) {
@@ -87,7 +96,7 @@ public class IntegerTypeRule implements Rule {
         return rules;
     }
 
-    private boolean isGivenNumberException(JSONObject rules, long number, StringBuilder letters) {
+    private boolean isNumberException(JSONObject rules, long number, StringBuilder letters) {
         JSONObject exceptions = (JSONObject) rules.get(EXCEPTIONS);
         if (exceptions != null && exceptions.get(String.valueOf(number)) != null) {
             letters.append(exceptions.get(String.valueOf(number)));
@@ -96,7 +105,7 @@ public class IntegerTypeRule implements Rule {
         return false;
     }
 
-    private boolean isBasePartException(JSONObject rules, long number, int digitsCount, int base, StringBuilder letters) throws NotDefinedRuleException {
+    private boolean isBasePartException(JSONObject rules, long number, int digitsCount, int base, StringBuilder letters) throws LanguageNotDefinedException, NotDefinedRuleException {
         long d = number / base;
         long val = d * base;
 
@@ -111,55 +120,57 @@ public class IntegerTypeRule implements Rule {
         return false;
     }
 
-    private void calculate(String number, StringBuilder letters) throws NotDefinedRuleException {
+    private void calculate(String number, StringBuilder letters) throws LanguageNotDefinedException, NotDefinedRuleException {
         long n = Long.parseLong(number);
-        if(n >=10_000_000_000l && n<= 1_000_000_000_000l){
+        if (n >= 10_000_000_000l && n <= 1_000_000_000_000l) {
             calculateForTenAndHundredBillions(n, letters);
-        }
-        else if(n >=10_000_000 && n< 1_000_000_000){
+        } else if (n >= 10_000_000 && n < 1_000_000_000) {
             calculateForTenAndHundredMillions(n, letters);
-        }
-        else if (n >=10_000 && n < 1_000_000) {
+        } else if (n >= 10_000 && n < 1_000_000) {
             calculateForTenAndHundredThousands(n, letters);
         } else {
             calculate(n, number.length(), letters);
         }
     }
 
-    private void calculateForTenAndHundredThousands(long number, StringBuilder letters) throws NotDefinedRuleException {
+    private void calculateForTenAndHundredThousands(long number, StringBuilder letters) throws LanguageNotDefinedException, NotDefinedRuleException {
         long thousandPart = number / 1000;
         long remainingPart = number - thousandPart * 1000;
         int digits = thousandPart / 100 == 0 ? 2 : 3;
 
         calculate(thousandPart, digits, letters);
-        letters.append(common.get(THOUSAND));
-        calculate(remainingPart, 3, letters);
+        letters.append(common.get(SPLITTER)).append(common.get(THOUSAND));
+        if (remainingPart != 0) calculate(remainingPart, 3, letters);
     }
 
-    private void calculateForTenAndHundredMillions(long number, StringBuilder letters) throws NotDefinedRuleException {
+    private void calculateForTenAndHundredMillions(long number, StringBuilder letters) throws LanguageNotDefinedException, NotDefinedRuleException {
         long millionPart = number / 1_000_000l;
         long remainingPart = number - millionPart * 1_000_000l;
         int digits = millionPart / 100 == 0 ? 2 : 3;
 
         calculate(millionPart, digits, letters);
         letters.append(common.get(MILLION));
-        calculateForTenAndHundredThousands(remainingPart, letters);
+        if (remainingPart != 0) calculateForTenAndHundredThousands(remainingPart, letters);
     }
 
-    private void calculateForTenAndHundredBillions(long number, StringBuilder letters) throws NotDefinedRuleException {
+    private void calculateForTenAndHundredBillions(long number, StringBuilder letters) throws LanguageNotDefinedException, NotDefinedRuleException {
         long billionPart = number / 1_000_000_000;
         long remainingPart = number - billionPart * 1_000_000_000;
         int digits = billionPart / 100 == 0 ? 2 : 3;
 
         calculate(billionPart, digits, letters);
         letters.append(common.get(BILLION));
-        calculateForTenAndHundredMillions(remainingPart, letters);
+        if (remainingPart != 0) calculateForTenAndHundredMillions(remainingPart, letters);
     }
 
-    private void calculate(long number, int digitsCount, StringBuilder letters) throws NotDefinedRuleException {
+    private void calculate(long number, int digitsCount, StringBuilder letters) throws NotDefinedRuleException, LanguageNotDefinedException {
+        if (digitsCount == 2 && number % 10 == 0) {
+            letters.append(tens.get(String.valueOf(number)));
+            return;
+        }
         String ruleName = getRuleNameByDigitsCount(digitsCount);
         JSONObject rules = getRuleByRuleName(ruleName);
-        if (isGivenNumberException(rules, number, letters))
+        if (isNumberException(rules, number, letters))
             return;
 
         String rule = rules.get(RULE).toString();
@@ -172,29 +183,37 @@ public class IntegerTypeRule implements Rule {
 
         applyRules(k, remainder, base, rule, letters);
 
+        //this condition for if the number 3 digits and second digit is zero
+        if(base ==100 && (number/10) %10 ==0){
+            letters.append(common.get(SPLITTER)).append(ones.get(String.valueOf(remainder)));
+            return;
+        }
+
         calculateForSpecialCases(remainder, digitsCount, letters);
 
     }
-    private void calculateForSpecialCases(long number, int digitsCount, StringBuilder letters) throws NotDefinedRuleException {
-        if(number !=0 && (digitsCount == 6 || digitsCount == 7)) {
+
+    private void calculateForSpecialCases(long number, int digitsCount, StringBuilder letters) throws
+            LanguageNotDefinedException, NotDefinedRuleException {
+        if (number != 0 && (digitsCount == 6 || digitsCount == 7)) {
             calculateForTenAndHundredThousands(number, letters.append(common.get(SPLITTER)));
-        } else if(number !=0 && (digitsCount == 10 || digitsCount == 9)) {
+        } else if (number != 0 && (digitsCount == 10 || digitsCount == 9)) {
             calculateForTenAndHundredMillions(number, letters.append(common.get(SPLITTER)));
-        }
-        else if (number != 0 && digitsCount > 2) {
+        } else if (number != 0 && digitsCount > 2) {
             calculate(number, digitsCount - 1, letters.append(common.get(SPLITTER)));
         }
     }
+
     private void applyRules(long k, long remainder, long base, String rule, StringBuilder letters) {
-        if (base == 10) {
+        if (k != 0 && base == 10) {
             rule = rule.replaceAll(REF_TENS, tens.get(String.valueOf(k * base)).toString());
             rule = rule.replaceAll(REF_ONES, ones.getOrDefault(String.valueOf(remainder), "").toString());
-        } else {
+        } else if (k != 0) {
             rule = rule.replaceAll(REF_ONES, ones.getOrDefault(String.valueOf(k), "").toString());
         }
         rule = rule
-                .replaceAll("__", patternRuleMap.get("__"))
-                .replaceAll("_", patternRuleMap.get("_"));
+                .replaceAll(SPACE_SYMBOL, patternRuleMap.get(SPACE))
+                .replaceAll(CONCAT_SYMBOL, patternRuleMap.get(CONCAT));
         letters.append(rule);
 
     }
@@ -219,7 +238,7 @@ public class IntegerTypeRule implements Rule {
                 ruleName = BILLIONS_RULES;
                 break;
             default:
-                throw new NotDefinedRuleException(NOT_DEFINED.concat(" "+digitsCount+""), digitsCount);
+                throw new NotDefinedRuleException(ruleName, digitsCount);
         }
 
         return ruleName;

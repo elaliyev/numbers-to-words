@@ -1,15 +1,20 @@
 import common.Language;
-import service.IntegerTypeRule;
-import service.Rule;
+import service.IntegerNumbersRule;
+import service.NumberRule;
+import service.SmallTextParse;
 
 public class DigitsToLetters {
 
     public static void main(String[] args) throws Exception {
 
-        Rule integerRule = new IntegerTypeRule();
+        NumberRule integerRule = new IntegerNumbersRule();
         integerRule.loadRuleFile("rules.json");
         integerRule.setLanguage(Language.EN);
-        System.out.println("10_426_250_321->"+integerRule.convert("10426250321", new StringBuilder()));
 
+        String text = " 69999 7 44 I am 32 years old I have born in 1987 and 54, 6 degree 55 4   0  8";
+        System.out.println("size "+text.length());
+        SmallTextParse parse = new SmallTextParse(integerRule);
+        String result = parse.findAndReplaceIntegerNumber(text);
+        System.out.println(result);
     }
 }
