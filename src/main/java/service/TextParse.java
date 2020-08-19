@@ -5,5 +5,6 @@ package service;
  * @author https://github.com/elaliyev/
  */
 public interface TextParse {
+    String findAndReplacePositiveIntegerNumber(String text);
     String findAndReplaceIntegerNumber(String text);
 }

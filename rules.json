@@ -10,11 +10,11 @@
 
     },
     "ru": {
-      "negative_sign": "otricatelniy",
+      "negative_sign": "отрицательный",
       "splitter": " ",
-      "thousand": "tishachi ",
-      "million": "million",
-      "billion": "milyard"
+      "thousand": "тысяч",
+      "million": "миллион",
+      "billion": "миллиард"
     },
     "az": {
       "negative_sign": "mənfi",
@@ -40,7 +40,18 @@
       }
     },
     "ru": {
-      "rule": "#ones$CONCAT$nadcat"
+      "rule": "#tens$SPACE$#ones",
+      "exceptions": {
+        "11": "одиннадцать",
+        "12": "двенадцать",
+        "13": "тринадцать",
+        "14": "четырнадцать",
+        "15": "пятнадцать",
+        "16": "шестнадцать",
+        "17": "семнадцать",
+        "18": "восемьнадцать",
+        "19": "девятнадцать"
+      }
     },
     "az": {
       "rule": "#tens$SPACE$#ones"
@@ -51,12 +62,12 @@
       "rule": "#ones$SPACE$hundred"
     },
     "ru": {
-      "rule": "#ones$CONCAT$sot",
+      "rule": "#ones$CONCAT$сот",
       "exceptions": {
-        "100" : "sot",
-        "200" : "dvuxsot",
-        "300" : "trixsot",
-        "400": "chetirexsot"
+        "100" : "сто",
+        "200" : "двести",
+        "300" : "триста",
+        "400": "четыреста"
       }
     },
     "az": {
@@ -71,10 +82,14 @@
       "rule": "#ones$SPACE$thousand"
     },
     "ru": {
-      "rule": "#ones$CONCAT$tishachi",
+      "rule": "#ones$SPACE$тысяч",
       "exceptions": {
-        "1000" : "tishaci",
-        "2000" : "dvuxtishaci"
+        "1000" : "одна тысяча",
+        "2000" : "два тысяча",
+        "3000" : "три тысяча",
+        "4000" : "четыре тысяча",
+        "300000" : "триста тысячь",
+        "400000" : "четыреста тысячь"
       }
     },
     "az": {
@@ -89,7 +104,7 @@
       "rule": "#ones$SPACE$million"
     },
     "ru": {
-      "rule": "#ones$CONCAT$milyon"
+      "rule": "#ones$SPACE$миллион"
     },
     "az": {
       "rule": "#ones$SPACE$milyon"
@@ -100,7 +115,7 @@
       "rule": "#ones$SPACE$billion"
     },
     "ru": {
-      "rule": "#ones$CONCAT$milyard"
+      "rule": "#ones$SPACE$миллиард"
     },
     "az": {
       "rule": "#ones$SPACE$milyard"
@@ -112,7 +127,7 @@
       "0": "zero"
     },
     "ru": {
-      "0": "nol"
+      "0": "ноль"
     },
     "az": {
       "0": "sifir"
@@ -131,15 +146,15 @@
       "9": "nine"
     },
     "ru": {
-      "1": "odin",
-      "2": "dva",
-      "3": "tri",
-      "4": "cetire",
-      "5": "pyat",
-      "6": "shest",
-      "7": "sem",
-      "8": "vosem",
-      "9": "devit"
+      "1": "один",
+      "2": "два",
+      "3": "три",
+      "4": "четыре",
+      "5": "пять",
+      "6": "шесть",
+      "7": "семь",
+      "8": "восемь",
+      "9": "девять"
     },
     "az": {
       "1": "bir",
@@ -166,15 +181,15 @@
       "90": "ninety"
     },
     "ru": {
-      "10": "desit",
-      "20": "dvadcat",
-      "30": "tridcat",
-      "40": "sorok",
-      "50": "pyadesat",
-      "60": "shesdisat",
-      "70": "semdesat",
-      "80": "vosemdesat",
-      "90": "devitdesat"
+      "10": "десять",
+      "20": "двадцать",
+      "30": "тридцать",
+      "40": "сорок",
+      "50": "пятьдесят",
+      "60": "шестьдесят",
+      "70": "семьдесят",
+      "80": "восемьдесят",
+      "90": "девяносто"
     },
     "az": {
       "10": "on",

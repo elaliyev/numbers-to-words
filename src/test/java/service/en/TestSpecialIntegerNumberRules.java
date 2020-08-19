@@ -120,6 +120,7 @@ public class TestSpecialIntegerNumberRules {
         Assert.assertEquals("one hundred one thousand one", integerRule.convert("101001"));
 
         Assert.assertEquals("three hundred thirty three thousand four hundred fifty six", integerRule.convert("333456"));
+        Assert.assertEquals("negative three hundred thirty three thousand four hundred fifty six", integerRule.convert("-333456"));
     }
 
     @Test

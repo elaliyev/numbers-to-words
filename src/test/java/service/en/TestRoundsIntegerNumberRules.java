@@ -30,6 +30,8 @@ public class TestRoundsIntegerNumberRules {
         Assert.assertEquals("seven", integerRule.convert("7"));
         Assert.assertEquals("eight", integerRule.convert("8"));
         Assert.assertEquals("nine", integerRule.convert("9"));
+
+        Assert.assertEquals("negative nine", integerRule.convert("-9"));
     }
 
     @Test

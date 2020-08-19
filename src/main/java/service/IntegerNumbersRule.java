@@ -98,10 +98,12 @@ public class IntegerNumbersRule implements NumberRule {
         checkJsonFileStructure();
         loadRules();
 
-        String number = value.replaceAll("_", ""); // accept java 9 number format
+        String number = value.replaceAll("_", ""); // accept java number format
 
         if (number.startsWith("-")) {
             letters.append(common.get(NEGATIVE_SIGN));
+            addSplitter();
+            number = number.substring(1);
         }
         int digitsCount = number.length();
         long n = Long.parseLong(number);

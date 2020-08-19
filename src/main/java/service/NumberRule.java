@@ -10,5 +10,4 @@ import exceptions.LanguageNotSupportedException;
 public interface NumberRule {
 
     String convert(String number) throws JsonFileStructureException, LanguageNotSupportedException;
-
 }

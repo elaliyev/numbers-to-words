@@ -30,10 +30,12 @@ public class TestRoundsIntegerNumberRules {
         Assert.assertEquals("yeddi", integerRule.convert("7"));
         Assert.assertEquals("səkkiz", integerRule.convert("8"));
         Assert.assertEquals("doqquz", integerRule.convert("9"));
+
+        Assert.assertEquals("mənfi doqquz", integerRule.convert("-9"));
     }
 
     @Test
-    public void testons() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testTens() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("on", integerRule.convert("10"));
         Assert.assertEquals("iyirmi", integerRule.convert("20"));
         Assert.assertEquals("otuz", integerRule.convert("30"));
@@ -46,7 +48,7 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testyüzs() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testHundreds() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("yüz", integerRule.convert("100"));
         Assert.assertEquals("iki yüz", integerRule.convert("200"));
         Assert.assertEquals("üç yüz", integerRule.convert("300"));
@@ -59,8 +61,8 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testmins() throws JsonFileStructureException, LanguageNotSupportedException {
-       // Assert.assertEquals("min", integerRule.convert("1000"));
+    public void testThousands() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("min", integerRule.convert("1000"));
         Assert.assertEquals("iki min", integerRule.convert("2000"));
         Assert.assertEquals("üç min", integerRule.convert("3000"));
         Assert.assertEquals("dörd min", integerRule.convert("4000"));
@@ -72,7 +74,7 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testonmins() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testTenThousands() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("on min", integerRule.convert("10000"));
         Assert.assertEquals("iyirmi min", integerRule.convert("20000"));
         Assert.assertEquals("otuz min", integerRule.convert("30000"));
@@ -85,7 +87,7 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testyüzmins() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testHundredTousands() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("yüz min", integerRule.convert("100000"));
         Assert.assertEquals("iki yüz min", integerRule.convert("200000"));
         Assert.assertEquals("üç yüz min", integerRule.convert("300000"));
@@ -98,8 +100,8 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testmilyons() throws JsonFileStructureException, LanguageNotSupportedException {
-      //  Assert.assertEquals("milyon", integerRule.convert("1000000"));
+    public void testMillions() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("bir milyon", integerRule.convert("1000000"));
         Assert.assertEquals("iki milyon", integerRule.convert("2000000"));
         Assert.assertEquals("üç milyon", integerRule.convert("3000000"));
         Assert.assertEquals("dörd milyon", integerRule.convert("4000000"));
@@ -111,7 +113,7 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testonmilyons() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testTenMillions() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("on milyon", integerRule.convert("10000000"));
         Assert.assertEquals("iyirmi milyon", integerRule.convert("20000000"));
         Assert.assertEquals("otuz milyon", integerRule.convert("30000000"));
@@ -124,7 +126,7 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testyüzmilyons() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testHundredMillions() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("yüz milyon", integerRule.convert("100000000"));
         Assert.assertEquals("iki yüz milyon", integerRule.convert("200000000"));
         Assert.assertEquals("üç yüz milyon", integerRule.convert("300000000"));
@@ -137,7 +139,7 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testmilyards() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testBillions() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("bir milyard", integerRule.convert("1000000000"));
         Assert.assertEquals("iki milyard", integerRule.convert("2000000000"));
         Assert.assertEquals("üç milyard", integerRule.convert("3000000000"));
@@ -150,7 +152,7 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testonmilyards() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testTenBillions() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("on milyard", integerRule.convert("10000000000"));
         Assert.assertEquals("iyirmi milyard", integerRule.convert("20000000000"));
         Assert.assertEquals("otuz milyard", integerRule.convert("30000000000"));
@@ -163,7 +165,7 @@ public class TestRoundsIntegerNumberRules {
     }
 
     @Test
-    public void testyüzmilyards() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testHundredBillions() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("yüz milyard", integerRule.convert("100000000000"));
         Assert.assertEquals("iki yüz milyard", integerRule.convert("200000000000"));
         Assert.assertEquals("üç yüz milyard", integerRule.convert("300000000000"));

@@ -13,7 +13,7 @@ public class DigitsToLetters {
         String text = "a 13.";
         System.out.println("size "+text.length());
         SmallTextParse parse = new SmallTextParse(integerRule);
-        String result = parse.findAndReplaceIntegerNumber(text);
+        String result = parse.findAndReplacePositiveIntegerNumber(text);
         System.out.println(result);
     }
 }

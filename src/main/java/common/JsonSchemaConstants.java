@@ -41,7 +41,7 @@ public class JsonSchemaConstants {
 
     //pattern rule map
     public static final Map<String, String> patternRuleMap = Map.of(
-            SPACE," ",
-            CONCAT,"");
+            SPACE, " ",
+            CONCAT, "");
 
 }

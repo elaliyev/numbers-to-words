@@ -19,8 +19,14 @@ public class SmallTextParse implements TextParse {
         this.rule = rule;
     }
 
+    /**
+     * implemented for find positive integer in the text and replaced it with given language (ignored "-" sign)
+     *
+     * @param text
+     * @return
+     */
     @Override
-    public String findAndReplaceIntegerNumber(final String text) {
+    public String findAndReplacePositiveIntegerNumber(final String text) {
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++) {
@@ -34,12 +40,17 @@ public class SmallTextParse implements TextParse {
                 } catch (LanguageNotSupportedException | JsonFileStructureException e) {
                     e.printStackTrace();
                 }
-                i = end-1;
+                i = end - 1;
             } else {
                 result.append(text.charAt(i));
             }
         }
         return result.toString();
+    }
+
+    @Override
+    public String findAndReplaceIntegerNumber(String text) {
+        return null;
     }
 
     private boolean isNumber(final char ch) {

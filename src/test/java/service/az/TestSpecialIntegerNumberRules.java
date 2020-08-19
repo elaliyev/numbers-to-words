@@ -34,7 +34,7 @@ public class TestSpecialIntegerNumberRules {
     }
 
     @Test
-    public void testonsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testTensRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("iyirmi bir", integerRule.convert("21"));
         Assert.assertEquals("iyirmi üç", integerRule.convert("23"));
         Assert.assertEquals("otuz bir", integerRule.convert("31"));
@@ -64,7 +64,7 @@ public class TestSpecialIntegerNumberRules {
     }
 
     @Test
-    public void testminsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testThousandsRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("min bir", integerRule.convert("1001"));
         Assert.assertEquals("min on", integerRule.convert("1010"));
         Assert.assertEquals("min yüz", integerRule.convert("1100"));
@@ -85,7 +85,7 @@ public class TestSpecialIntegerNumberRules {
     }
 
     @Test
-    public void testonminsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testTenThousandsRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("on min bir", integerRule.convert("10001"));
         Assert.assertEquals("on min on", integerRule.convert("10010"));
         Assert.assertEquals("on bir min", integerRule.convert("11000"));
@@ -104,7 +104,7 @@ public class TestSpecialIntegerNumberRules {
     }
 
     @Test
-    public void testHundredminsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testHundredThousandsRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("yüz min", integerRule.convert("100000"));
         Assert.assertEquals("yüz min bir", integerRule.convert("100001"));
         Assert.assertEquals("yüz min on", integerRule.convert("100010"));
@@ -123,7 +123,7 @@ public class TestSpecialIntegerNumberRules {
     }
 
     @Test
-    public void testmilyonsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testMillionsRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("bir milyon bir", integerRule.convert("1_000_001"));
         Assert.assertEquals("bir milyon on", integerRule.convert("1_000_010"));
         Assert.assertEquals("bir milyon yüz", integerRule.convert("1_000_100"));
@@ -151,7 +151,7 @@ public class TestSpecialIntegerNumberRules {
     }
 
     @Test
-    public void testonmilyonsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testTenMiillionsRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("on milyon bir", integerRule.convert("10_000_001"));
         Assert.assertEquals("on milyon on", integerRule.convert("10_000_010"));
         Assert.assertEquals("on milyon yüz", integerRule.convert("10_000_100"));
@@ -181,7 +181,7 @@ public class TestSpecialIntegerNumberRules {
     }
 
     @Test
-    public void testonAndHundredmilyonsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testTenAndHundredMillionsRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("yüz milyon bir", integerRule.convert("100_000_001"));
         Assert.assertEquals("yüz milyon on", integerRule.convert("100_000_010"));
         Assert.assertEquals("yüz milyon yüz", integerRule.convert("100_000_100"));
@@ -219,7 +219,7 @@ public class TestSpecialIntegerNumberRules {
     }
 
     @Test
-    public void testmilyardsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testBillionRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("bir milyard bir", integerRule.convert("1_000_000_001"));
         Assert.assertEquals("bir milyard on", integerRule.convert("1_000_000_010"));
         Assert.assertEquals("bir milyard yüz", integerRule.convert("1_000_000_100"));
@@ -246,10 +246,11 @@ public class TestSpecialIntegerNumberRules {
         Assert.assertEquals("bir milyard iki yüz iyirmi iki milyon on bir min on altı", integerRule.convert("1_222_011_016"));
 
         Assert.assertEquals("səkkiz milyard doqquz yüz doxsan doqquz milyon səkkiz yüz səksən səkkiz min səkkiz yüz səksən səkkiz", integerRule.convert("8_999_888_888"));
+        Assert.assertEquals("mənfi səkkiz milyard doqquz yüz doxsan doqquz milyon səkkiz yüz səksən səkkiz min səkkiz yüz səksən səkkiz", integerRule.convert("-8_999_888_888"));
     }
 
     @Test
-    public void testonmilyardsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testTenBillionsRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("on milyard bir", integerRule.convert("10_000_000_001"));
         Assert.assertEquals("on milyard on", integerRule.convert("10_000_000_010"));
         Assert.assertEquals("on milyard yüz", integerRule.convert("10_000_000_100"));
@@ -279,7 +280,7 @@ public class TestSpecialIntegerNumberRules {
     }
 
     @Test
-    public void testHundredmilyardsRules() throws JsonFileStructureException, LanguageNotSupportedException {
+    public void testHundredBillionsRules() throws JsonFileStructureException, LanguageNotSupportedException {
         Assert.assertEquals("yüz milyard bir", integerRule.convert("100_000_000_001"));
         Assert.assertEquals("yüz milyard on", integerRule.convert("100_000_000_010"));
         Assert.assertEquals("yüz milyard yüz", integerRule.convert("100_000_000_100"));
