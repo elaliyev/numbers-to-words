@@ -1,9 +1,10 @@
 package service;
 
-import common.Language;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Locale;
 
 public class TestTextParse {
 
@@ -12,7 +13,7 @@ public class TestTextParse {
 
     @Before
     public void setup() {
-        integerRule = new IntegerNumbersRule(Language.EN.getLang(), "rules.json");
+        integerRule = new IntegerNumbersRule(new Locale("en"), "rules.json");
         textParse = new SmallTextParse(integerRule);
     }
 

@@ -1,6 +1,5 @@
 package service.en;
 
-import common.Language;
 import exceptions.JsonFileStructureException;
 import exceptions.LanguageNotSupportedException;
 import org.junit.Assert;
@@ -9,6 +8,8 @@ import org.junit.Test;
 import service.IntegerNumbersRule;
 import service.NumberRule;
 
+import java.util.Locale;
+
 
 public class TestSpecialIntegerNumberRules {
 
@@ -16,7 +17,7 @@ public class TestSpecialIntegerNumberRules {
 
     @Before
     public void setup() {
-        integerRule = new IntegerNumbersRule(Language.EN.getLang(), "rules.json");
+        integerRule = new IntegerNumbersRule(new Locale("en"), "rules.json");
     }
 
     @Test

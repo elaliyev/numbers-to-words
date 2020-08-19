@@ -1,6 +1,5 @@
 package service;
 
-import common.Language;
 import exceptions.JsonFileStructureException;
 import exceptions.LanguageNotSupportedException;
 import org.json.simple.JSONObject;
@@ -11,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
 
 import static common.JsonSchemaConstants.*;
 import static common.JsonSchemaConstants.COMMON_DEF;
@@ -29,7 +29,7 @@ public class IntegerNumbersRule implements NumberRule {
 
     private Logger logger = LoggerFactory.getLogger(IntegerNumbersRule.class);
 
-    private final String language;
+    private final Locale locale;
     private final String ruleFile;
 
     private JSONObject rules;
@@ -40,8 +40,8 @@ public class IntegerNumbersRule implements NumberRule {
 
     private StringBuilder letters;
 
-    public IntegerNumbersRule(final String language, final String ruleFile) {
-        this.language = language;
+    public IntegerNumbersRule(final Locale locale, final String ruleFile) {
+        this.locale = locale;
         this.ruleFile = ruleFile;
     }
 
@@ -71,21 +71,21 @@ public class IntegerNumbersRule implements NumberRule {
         if (rules.get(field) == null)
             throw new JsonFileStructureException(field + " is not defined");
 
-        if (((JSONObject) rules.get(field)).get(language) == null)
-            throw new LanguageNotSupportedException(language + " not defined for " + field + " field");
+        if (((JSONObject) rules.get(field)).get(locale.getLanguage()) == null)
+            throw new LanguageNotSupportedException(locale.getLanguage() + " not defined for " + field + " field");
     }
 
     private void loadRules() {
 
-        zero = (JSONObject) ((JSONObject) rules.get(ZERO)).get(language);
-        ones = (JSONObject) ((JSONObject) rules.get(ONES)).get(language);
-        tens = (JSONObject) ((JSONObject) rules.get(TENS)).get(language);
-        common = (JSONObject) ((JSONObject) rules.get(COMMON_DEF)).get(language);
+        zero = (JSONObject) ((JSONObject) rules.get(ZERO)).get(locale.getLanguage());
+        ones = (JSONObject) ((JSONObject) rules.get(ONES)).get(locale.getLanguage());
+        tens = (JSONObject) ((JSONObject) rules.get(TENS)).get(locale.getLanguage());
+        common = (JSONObject) ((JSONObject) rules.get(COMMON_DEF)).get(locale.getLanguage());
     }
 
     private JSONObject getRuleByRuleName(final String ruleName) {
         JSONObject langs = (JSONObject) rules.get(ruleName);
-        JSONObject rules = (JSONObject) langs.get(language);
+        JSONObject rules = (JSONObject) langs.get(locale.getLanguage());
         return rules;
     }
 

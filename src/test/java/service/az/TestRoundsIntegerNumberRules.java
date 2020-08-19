@@ -1,6 +1,5 @@
 package service.az;
 
-import common.Language;
 import exceptions.JsonFileStructureException;
 import exceptions.LanguageNotSupportedException;
 import org.junit.Assert;
@@ -9,13 +8,15 @@ import org.junit.Test;
 import service.IntegerNumbersRule;
 import service.NumberRule;
 
+import java.util.Locale;
+
 public class TestRoundsIntegerNumberRules {
 
     NumberRule integerRule;
 
     @Before
     public void setup() {
-        integerRule = new IntegerNumbersRule(Language.AZ.getLang(), "rules.json");
+        integerRule = new IntegerNumbersRule(new Locale("en"), "rules.json");
     }
 
     @Test
