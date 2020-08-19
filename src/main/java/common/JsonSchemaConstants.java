@@ -28,6 +28,7 @@ public class JsonSchemaConstants {
     public static final String THOUSANDS_RULES = "thousands_rules";
     public static final String MILLIONS_RULES = "millions_rules";
     public static final String BILLIONS_RULES = "billions_rules";
+    public static final String NOT_DEFINED_RULES = "billions_rules";
 
 
     //REF NAMES

@@ -1,4 +1,4 @@
-package common;
+package exceptions;
 
 public class JsonFileStructureException extends Throwable {
     public JsonFileStructureException(String message) {

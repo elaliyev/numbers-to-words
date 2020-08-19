@@ -4,8 +4,8 @@
       "negative_sign": "negative",
       "splitter": " ",
       "thousand": "thousand",
-      "million": " million",
-      "billion": " billion",
+      "million": "million",
+      "billion": "billion",
       "splitter_ones_tens": " and "
 
     },

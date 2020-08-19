@@ -1,16 +1,14 @@
 package service;
 
-import common.Language;
-import common.LanguageNotDefinedException;
-import common.NotDefinedRuleException;
-import org.json.simple.parser.ParseException;
+import exceptions.JsonFileStructureException;
+import exceptions.LanguageNotSupportedException;
 
-import java.io.IOException;
-
+/**
+ * @author Elvin
+ * @author https://github.com/elaliyev/
+ */
 public interface NumberRule {
 
-    void loadRuleFile(String jsonFile) throws IOException, ParseException;
-    void setLanguage(Language language);
-    String convert(String number, StringBuilder letters) throws NotDefinedRuleException, LanguageNotDefinedException, NotDefinedRuleException;
+    String convert(String number) throws JsonFileStructureException, LanguageNotSupportedException;
 
 }

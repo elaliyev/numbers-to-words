@@ -1,8 +1,12 @@
 package service;
 
-import common.LanguageNotDefinedException;
-import common.NotDefinedRuleException;
+import exceptions.JsonFileStructureException;
+import exceptions.LanguageNotSupportedException;
 
+/**
+ * @author Elvin
+ * @author https://github.com/elaliyev/
+ */
 public class SmallTextParse implements TextParse {
 
     private NumberRule rule;
@@ -11,33 +15,34 @@ public class SmallTextParse implements TextParse {
 
     }
 
-    public SmallTextParse(NumberRule rule) {
+    public SmallTextParse(final NumberRule rule) {
         this.rule = rule;
     }
 
     @Override
-    public String findAndReplaceIntegerNumber(String text) {
-
+    public String findAndReplaceIntegerNumber(final String text) {
         StringBuilder result = new StringBuilder();
+
         for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) >= '0' && text.charAt(i) <= '9') {
+            if (isNumber(text.charAt(i))) {
                 int end = i;
-                while (end < text.length() && text.charAt(end) >= '0' && text.charAt(end) <= '9') {
+                while (end < text.length() && isNumber(text.charAt(end))) {
                     end++;
                 }
-                System.out.println(text.substring(i, end));
                 try {
-                    result.append(rule.convert(text.substring(i, end), new StringBuilder())).append(" ");
-                } catch (NotDefinedRuleException e) {
-                    e.printStackTrace();
-                } catch (LanguageNotDefinedException e) {
+                    result.append(rule.convert(text.substring(i, end)));
+                } catch (LanguageNotSupportedException | JsonFileStructureException e) {
                     e.printStackTrace();
                 }
-                i = end;
+                i = end-1;
             } else {
                 result.append(text.charAt(i));
             }
         }
         return result.toString();
+    }
+
+    private boolean isNumber(final char ch) {
+        return ch >= '0' && ch <= '9';
     }
 }
