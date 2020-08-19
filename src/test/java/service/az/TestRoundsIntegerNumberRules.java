@@ -16,162 +16,162 @@ public class TestRoundsIntegerNumberRules {
 
     @Before
     public void setup() {
-        integerRule = new IntegerNumbersRule(new Locale("en"), "rules.json");
+        integerRule = new IntegerNumbersRule(new Locale("az"), "rules.json");
     }
 
     @Test
     public void testOnes() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("one", integerRule.convert("1"));
-        Assert.assertEquals("two", integerRule.convert("2"));
-        Assert.assertEquals("three", integerRule.convert("3"));
-        Assert.assertEquals("four", integerRule.convert("4"));
-        Assert.assertEquals("five", integerRule.convert("5"));
-        Assert.assertEquals("six", integerRule.convert("6"));
-        Assert.assertEquals("seven", integerRule.convert("7"));
-        Assert.assertEquals("eight", integerRule.convert("8"));
-        Assert.assertEquals("nine", integerRule.convert("9"));
+        Assert.assertEquals("bir", integerRule.convert("1"));
+        Assert.assertEquals("iki", integerRule.convert("2"));
+        Assert.assertEquals("üç", integerRule.convert("3"));
+        Assert.assertEquals("dörd", integerRule.convert("4"));
+        Assert.assertEquals("beş", integerRule.convert("5"));
+        Assert.assertEquals("altı", integerRule.convert("6"));
+        Assert.assertEquals("yeddi", integerRule.convert("7"));
+        Assert.assertEquals("səkkiz", integerRule.convert("8"));
+        Assert.assertEquals("doqquz", integerRule.convert("9"));
     }
 
     @Test
-    public void testTens() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("ten", integerRule.convert("10"));
-        Assert.assertEquals("twenty", integerRule.convert("20"));
-        Assert.assertEquals("thirty", integerRule.convert("30"));
-        Assert.assertEquals("forty", integerRule.convert("40"));
-        Assert.assertEquals("fifty", integerRule.convert("50"));
-        Assert.assertEquals("sixty", integerRule.convert("60"));
-        Assert.assertEquals("seventy", integerRule.convert("70"));
-        Assert.assertEquals("eighty", integerRule.convert("80"));
-        Assert.assertEquals("ninety", integerRule.convert("90"));
+    public void testons() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("on", integerRule.convert("10"));
+        Assert.assertEquals("iyirmi", integerRule.convert("20"));
+        Assert.assertEquals("otuz", integerRule.convert("30"));
+        Assert.assertEquals("qırx", integerRule.convert("40"));
+        Assert.assertEquals("əlli", integerRule.convert("50"));
+        Assert.assertEquals("altmış", integerRule.convert("60"));
+        Assert.assertEquals("yetmiş", integerRule.convert("70"));
+        Assert.assertEquals("səksən", integerRule.convert("80"));
+        Assert.assertEquals("doxsan", integerRule.convert("90"));
     }
 
     @Test
-    public void testHundreds() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("one hundred", integerRule.convert("100"));
-        Assert.assertEquals("two hundred", integerRule.convert("200"));
-        Assert.assertEquals("three hundred", integerRule.convert("300"));
-        Assert.assertEquals("four hundred", integerRule.convert("400"));
-        Assert.assertEquals("five hundred", integerRule.convert("500"));
-        Assert.assertEquals("six hundred", integerRule.convert("600"));
-        Assert.assertEquals("seven hundred", integerRule.convert("700"));
-        Assert.assertEquals("eight hundred", integerRule.convert("800"));
-        Assert.assertEquals("nine hundred", integerRule.convert("900"));
+    public void testyüzs() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("yüz", integerRule.convert("100"));
+        Assert.assertEquals("iki yüz", integerRule.convert("200"));
+        Assert.assertEquals("üç yüz", integerRule.convert("300"));
+        Assert.assertEquals("dörd yüz", integerRule.convert("400"));
+        Assert.assertEquals("beş yüz", integerRule.convert("500"));
+        Assert.assertEquals("altı yüz", integerRule.convert("600"));
+        Assert.assertEquals("yeddi yüz", integerRule.convert("700"));
+        Assert.assertEquals("səkkiz yüz", integerRule.convert("800"));
+        Assert.assertEquals("doqquz yüz", integerRule.convert("900"));
     }
 
     @Test
-    public void testThousands() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("one thousand", integerRule.convert("1000"));
-        Assert.assertEquals("two thousand", integerRule.convert("2000"));
-        Assert.assertEquals("three thousand", integerRule.convert("3000"));
-        Assert.assertEquals("four thousand", integerRule.convert("4000"));
-        Assert.assertEquals("five thousand", integerRule.convert("5000"));
-        Assert.assertEquals("six thousand", integerRule.convert("6000"));
-        Assert.assertEquals("seven thousand", integerRule.convert("7000"));
-        Assert.assertEquals("eight thousand", integerRule.convert("8000"));
-        Assert.assertEquals("nine thousand", integerRule.convert("9000"));
+    public void testmins() throws JsonFileStructureException, LanguageNotSupportedException {
+       // Assert.assertEquals("min", integerRule.convert("1000"));
+        Assert.assertEquals("iki min", integerRule.convert("2000"));
+        Assert.assertEquals("üç min", integerRule.convert("3000"));
+        Assert.assertEquals("dörd min", integerRule.convert("4000"));
+        Assert.assertEquals("beş min", integerRule.convert("5000"));
+        Assert.assertEquals("altı min", integerRule.convert("6000"));
+        Assert.assertEquals("yeddi min", integerRule.convert("7000"));
+        Assert.assertEquals("səkkiz min", integerRule.convert("8000"));
+        Assert.assertEquals("doqquz min", integerRule.convert("9000"));
     }
 
     @Test
-    public void testTenThousands() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("ten thousand", integerRule.convert("10000"));
-        Assert.assertEquals("twenty thousand", integerRule.convert("20000"));
-        Assert.assertEquals("thirty thousand", integerRule.convert("30000"));
-        Assert.assertEquals("forty thousand", integerRule.convert("40000"));
-        Assert.assertEquals("fifty thousand", integerRule.convert("50000"));
-        Assert.assertEquals("sixty thousand", integerRule.convert("60000"));
-        Assert.assertEquals("seventy thousand", integerRule.convert("70000"));
-        Assert.assertEquals("eighty thousand", integerRule.convert("80000"));
-        Assert.assertEquals("ninety thousand", integerRule.convert("90000"));
+    public void testonmins() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("on min", integerRule.convert("10000"));
+        Assert.assertEquals("iyirmi min", integerRule.convert("20000"));
+        Assert.assertEquals("otuz min", integerRule.convert("30000"));
+        Assert.assertEquals("qırx min", integerRule.convert("40000"));
+        Assert.assertEquals("əlli min", integerRule.convert("50000"));
+        Assert.assertEquals("altmış min", integerRule.convert("60000"));
+        Assert.assertEquals("yetmiş min", integerRule.convert("70000"));
+        Assert.assertEquals("səksən min", integerRule.convert("80000"));
+        Assert.assertEquals("doxsan min", integerRule.convert("90000"));
     }
 
     @Test
-    public void testHundredThousands() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("one hundred thousand", integerRule.convert("100000"));
-        Assert.assertEquals("two hundred thousand", integerRule.convert("200000"));
-        Assert.assertEquals("three hundred thousand", integerRule.convert("300000"));
-        Assert.assertEquals("four hundred thousand", integerRule.convert("400000"));
-        Assert.assertEquals("five hundred thousand", integerRule.convert("500000"));
-        Assert.assertEquals("six hundred thousand", integerRule.convert("600000"));
-        Assert.assertEquals("seven hundred thousand", integerRule.convert("700000"));
-        Assert.assertEquals("eight hundred thousand", integerRule.convert("800000"));
-        Assert.assertEquals("nine hundred thousand", integerRule.convert("900000"));
+    public void testyüzmins() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("yüz min", integerRule.convert("100000"));
+        Assert.assertEquals("iki yüz min", integerRule.convert("200000"));
+        Assert.assertEquals("üç yüz min", integerRule.convert("300000"));
+        Assert.assertEquals("dörd yüz min", integerRule.convert("400000"));
+        Assert.assertEquals("beş yüz min", integerRule.convert("500000"));
+        Assert.assertEquals("altı yüz min", integerRule.convert("600000"));
+        Assert.assertEquals("yeddi yüz min", integerRule.convert("700000"));
+        Assert.assertEquals("səkkiz yüz min", integerRule.convert("800000"));
+        Assert.assertEquals("doqquz yüz min", integerRule.convert("900000"));
     }
 
     @Test
-    public void testMillions() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("one million", integerRule.convert("1000000"));
-        Assert.assertEquals("two million", integerRule.convert("2000000"));
-        Assert.assertEquals("three million", integerRule.convert("3000000"));
-        Assert.assertEquals("four million", integerRule.convert("4000000"));
-        Assert.assertEquals("five million", integerRule.convert("5000000"));
-        Assert.assertEquals("six million", integerRule.convert("6000000"));
-        Assert.assertEquals("seven million", integerRule.convert("7000000"));
-        Assert.assertEquals("eight million", integerRule.convert("8000000"));
-        Assert.assertEquals("nine million", integerRule.convert("9000000"));
+    public void testmilyons() throws JsonFileStructureException, LanguageNotSupportedException {
+      //  Assert.assertEquals("milyon", integerRule.convert("1000000"));
+        Assert.assertEquals("iki milyon", integerRule.convert("2000000"));
+        Assert.assertEquals("üç milyon", integerRule.convert("3000000"));
+        Assert.assertEquals("dörd milyon", integerRule.convert("4000000"));
+        Assert.assertEquals("beş milyon", integerRule.convert("5000000"));
+        Assert.assertEquals("altı milyon", integerRule.convert("6000000"));
+        Assert.assertEquals("yeddi milyon", integerRule.convert("7000000"));
+        Assert.assertEquals("səkkiz milyon", integerRule.convert("8000000"));
+        Assert.assertEquals("doqquz milyon", integerRule.convert("9000000"));
     }
 
     @Test
-    public void testTenMillions() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("ten million", integerRule.convert("10000000"));
-        Assert.assertEquals("twenty million", integerRule.convert("20000000"));
-        Assert.assertEquals("thirty million", integerRule.convert("30000000"));
-        Assert.assertEquals("forty million", integerRule.convert("40000000"));
-        Assert.assertEquals("fifty million", integerRule.convert("50000000"));
-        Assert.assertEquals("sixty million", integerRule.convert("60000000"));
-        Assert.assertEquals("seventy million", integerRule.convert("70000000"));
-        Assert.assertEquals("eighty million", integerRule.convert("80000000"));
-        Assert.assertEquals("ninety million", integerRule.convert("90000000"));
+    public void testonmilyons() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("on milyon", integerRule.convert("10000000"));
+        Assert.assertEquals("iyirmi milyon", integerRule.convert("20000000"));
+        Assert.assertEquals("otuz milyon", integerRule.convert("30000000"));
+        Assert.assertEquals("qırx milyon", integerRule.convert("40000000"));
+        Assert.assertEquals("əlli milyon", integerRule.convert("50000000"));
+        Assert.assertEquals("altmış milyon", integerRule.convert("60000000"));
+        Assert.assertEquals("yetmiş milyon", integerRule.convert("70000000"));
+        Assert.assertEquals("səksən milyon", integerRule.convert("80000000"));
+        Assert.assertEquals("doxsan milyon", integerRule.convert("90000000"));
     }
 
     @Test
-    public void testHundredMillions() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("one hundred million", integerRule.convert("100000000"));
-        Assert.assertEquals("two hundred million", integerRule.convert("200000000"));
-        Assert.assertEquals("three hundred million", integerRule.convert("300000000"));
-        Assert.assertEquals("four hundred million", integerRule.convert("400000000"));
-        Assert.assertEquals("five hundred million", integerRule.convert("500000000"));
-        Assert.assertEquals("six hundred million", integerRule.convert("600000000"));
-        Assert.assertEquals("seven hundred million", integerRule.convert("700000000"));
-        Assert.assertEquals("eight hundred million", integerRule.convert("800000000"));
-        Assert.assertEquals("nine hundred million", integerRule.convert("900000000"));
+    public void testyüzmilyons() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("yüz milyon", integerRule.convert("100000000"));
+        Assert.assertEquals("iki yüz milyon", integerRule.convert("200000000"));
+        Assert.assertEquals("üç yüz milyon", integerRule.convert("300000000"));
+        Assert.assertEquals("dörd yüz milyon", integerRule.convert("400000000"));
+        Assert.assertEquals("beş yüz milyon", integerRule.convert("500000000"));
+        Assert.assertEquals("altı yüz milyon", integerRule.convert("600000000"));
+        Assert.assertEquals("yeddi yüz milyon", integerRule.convert("700000000"));
+        Assert.assertEquals("səkkiz yüz milyon", integerRule.convert("800000000"));
+        Assert.assertEquals("doqquz yüz milyon", integerRule.convert("900000000"));
     }
 
     @Test
-    public void testBillions() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("one billion", integerRule.convert("1000000000"));
-        Assert.assertEquals("two billion", integerRule.convert("2000000000"));
-        Assert.assertEquals("three billion", integerRule.convert("3000000000"));
-        Assert.assertEquals("four billion", integerRule.convert("4000000000"));
-        Assert.assertEquals("five billion", integerRule.convert("5000000000"));
-        Assert.assertEquals("six billion", integerRule.convert("6000000000"));
-        Assert.assertEquals("seven billion", integerRule.convert("7000000000"));
-        Assert.assertEquals("eight billion", integerRule.convert("8000000000"));
-        Assert.assertEquals("nine billion", integerRule.convert("9000000000"));
+    public void testmilyards() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("bir milyard", integerRule.convert("1000000000"));
+        Assert.assertEquals("iki milyard", integerRule.convert("2000000000"));
+        Assert.assertEquals("üç milyard", integerRule.convert("3000000000"));
+        Assert.assertEquals("dörd milyard", integerRule.convert("4000000000"));
+        Assert.assertEquals("beş milyard", integerRule.convert("5000000000"));
+        Assert.assertEquals("altı milyard", integerRule.convert("6000000000"));
+        Assert.assertEquals("yeddi milyard", integerRule.convert("7000000000"));
+        Assert.assertEquals("səkkiz milyard", integerRule.convert("8000000000"));
+        Assert.assertEquals("doqquz milyard", integerRule.convert("9000000000"));
     }
 
     @Test
-    public void testTenBillions() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("ten billion", integerRule.convert("10000000000"));
-        Assert.assertEquals("twenty billion", integerRule.convert("20000000000"));
-        Assert.assertEquals("thirty billion", integerRule.convert("30000000000"));
-        Assert.assertEquals("forty billion", integerRule.convert("40000000000"));
-        Assert.assertEquals("fifty billion", integerRule.convert("50000000000"));
-        Assert.assertEquals("sixty billion", integerRule.convert("60000000000"));
-        Assert.assertEquals("seventy billion", integerRule.convert("70000000000"));
-        Assert.assertEquals("eighty billion", integerRule.convert("80000000000"));
-        Assert.assertEquals("ninety billion", integerRule.convert("90000000000"));
+    public void testonmilyards() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("on milyard", integerRule.convert("10000000000"));
+        Assert.assertEquals("iyirmi milyard", integerRule.convert("20000000000"));
+        Assert.assertEquals("otuz milyard", integerRule.convert("30000000000"));
+        Assert.assertEquals("qırx milyard", integerRule.convert("40000000000"));
+        Assert.assertEquals("əlli milyard", integerRule.convert("50000000000"));
+        Assert.assertEquals("altmış milyard", integerRule.convert("60000000000"));
+        Assert.assertEquals("yetmiş milyard", integerRule.convert("70000000000"));
+        Assert.assertEquals("səksən milyard", integerRule.convert("80000000000"));
+        Assert.assertEquals("doxsan milyard", integerRule.convert("90000000000"));
     }
 
     @Test
-    public void testHundredBillions() throws JsonFileStructureException, LanguageNotSupportedException {
-        Assert.assertEquals("one hundred billion", integerRule.convert("100000000000"));
-        Assert.assertEquals("two hundred billion", integerRule.convert("200000000000"));
-        Assert.assertEquals("three hundred billion", integerRule.convert("300000000000"));
-        Assert.assertEquals("four hundred billion", integerRule.convert("400000000000"));
-        Assert.assertEquals("five hundred billion", integerRule.convert("500000000000"));
-        Assert.assertEquals("six hundred billion", integerRule.convert("600000000000"));
-        Assert.assertEquals("seven hundred billion", integerRule.convert("700000000000"));
-        Assert.assertEquals("eight hundred billion", integerRule.convert("800000000000"));
-        Assert.assertEquals("nine hundred billion", integerRule.convert("900000000000"));
+    public void testyüzmilyards() throws JsonFileStructureException, LanguageNotSupportedException {
+        Assert.assertEquals("yüz milyard", integerRule.convert("100000000000"));
+        Assert.assertEquals("iki yüz milyard", integerRule.convert("200000000000"));
+        Assert.assertEquals("üç yüz milyard", integerRule.convert("300000000000"));
+        Assert.assertEquals("dörd yüz milyard", integerRule.convert("400000000000"));
+        Assert.assertEquals("beş yüz milyard", integerRule.convert("500000000000"));
+        Assert.assertEquals("altı yüz milyard", integerRule.convert("600000000000"));
+        Assert.assertEquals("yeddi yüz milyard", integerRule.convert("700000000000"));
+        Assert.assertEquals("səkkiz yüz milyard", integerRule.convert("800000000000"));
+        Assert.assertEquals("doqquz yüz milyard", integerRule.convert("900000000000"));
     }
 }

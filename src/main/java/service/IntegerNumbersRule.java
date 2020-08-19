@@ -92,7 +92,7 @@ public class IntegerNumbersRule implements NumberRule {
     @Override
     public String convert(final String value)
             throws JsonFileStructureException, LanguageNotSupportedException {
-        logger.info("Given Number {}",value);
+        logger.info("Given Number {}", value);
         letters = new StringBuilder();
         loadRuleFile();
         checkJsonFileStructure();
@@ -139,12 +139,12 @@ public class IntegerNumbersRule implements NumberRule {
 
         String ruleName = getRuleNameByDigitsCount(digits);
         JSONObject rules = getRuleByRuleName(ruleName);
-        if (isNumberException(rules, number)) return;
+        if (applyIfNumberIsException(rules, number)) return;
 
         String rule = rules.get(RULE).toString();
 
         int base = getBaseByDigitsCount(digits);
-        if (isBasePartException(rules, number, base)) return;
+        if (applyIfBasePartIsException(rules, number, base)) return;
 
         long k = number / base;
         long remainder = number - k * base;
@@ -175,13 +175,12 @@ public class IntegerNumbersRule implements NumberRule {
         long thousandPart = number / 1000;
         long remainingPart = number - thousandPart * 1000;
 
-        calculate(thousandPart);
-
-        if (!letters.toString().endsWith(common.get(SPLITTER).toString())) {
+        JSONObject rules = getRuleByRuleName(THOUSANDS_RULES);
+        if (!applyIfNumberIsException(rules, thousandPart * 1000)) {
+            calculate(thousandPart);
             addSplitter();
+            letters.append(common.get(THOUSAND));
         }
-
-        letters.append(common.get(THOUSAND));
 
         if (remainingPart != 0) {
             addSplitter();
@@ -193,13 +192,13 @@ public class IntegerNumbersRule implements NumberRule {
         long millionPart = number / 1_000_000L;
         long remainingPart = number - millionPart * 1_000_000L;
 
-        calculate(millionPart);
-
-        if (!letters.toString().endsWith(common.get(SPLITTER).toString())) {
+        JSONObject rules = getRuleByRuleName(MILLIONS_RULES);
+        if (!applyIfNumberIsException(rules, millionPart * 1_000_000L)) {
+            calculate(millionPart);
             addSplitter();
+            letters.append(common.get(MILLION));
         }
 
-        letters.append(common.get(MILLION));
         calculateForBigNumbers(remainingPart);
     }
 
@@ -207,13 +206,12 @@ public class IntegerNumbersRule implements NumberRule {
         long billionPart = number / 1_000_000_000;
         long remainingPart = number - billionPart * 1_000_000_000;
 
-        calculate(billionPart);
-
-        if (!letters.toString().endsWith(common.get(SPLITTER).toString())) {
+        JSONObject rules = getRuleByRuleName(MILLIONS_RULES);
+        if (!applyIfNumberIsException(rules, billionPart * 1_000_000_000)) {
+            calculate(billionPart);
             addSplitter();
+            letters.append(common.get(BILLION));
         }
-
-        letters.append(common.get(BILLION));
         calculateForBigNumbers(remainingPart);
     }
 
@@ -229,12 +227,12 @@ public class IntegerNumbersRule implements NumberRule {
                     .toString());
         }
         value = value.trim()
-                        .replaceAll(SPACE_SYMBOL, patternRuleMap.get(SPACE))
-                        .replaceAll(CONCAT_SYMBOL, patternRuleMap.get(CONCAT));
+                .replaceAll(SPACE_SYMBOL, patternRuleMap.get(SPACE))
+                .replaceAll(CONCAT_SYMBOL, patternRuleMap.get(CONCAT));
         letters.append(value);
     }
 
-    private boolean isNumberException(final JSONObject rules, final long number) {
+    private boolean applyIfNumberIsException(final JSONObject rules, final long number) {
         JSONObject exceptions = (JSONObject) rules.get(EXCEPTIONS);
         if (exceptions != null && exceptions.get(String.valueOf(number)) != null) {
             letters.append(exceptions.get(String.valueOf(number)))
@@ -244,7 +242,7 @@ public class IntegerNumbersRule implements NumberRule {
         return false;
     }
 
-    private boolean isBasePartException(final JSONObject rules, final long number, final int base) {
+    private boolean applyIfBasePartIsException(final JSONObject rules, final long number, final int base) {
         long d = number / base;
         long val = d * base;
 
@@ -263,6 +261,8 @@ public class IntegerNumbersRule implements NumberRule {
     }
 
     private void addSplitter() {
-        letters.append(common.get(SPLITTER));
+        if (!letters.toString().endsWith(common.get(SPLITTER).toString())) {
+            letters.append(common.get(SPLITTER));
+        }
     }
 }
