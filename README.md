@@ -178,4 +178,4 @@ Also, sometimes some numbers don't follow the rules. for example - eleven (11), 
    
 Now only integers are supported, and it also supports searching and converting all POSITIVE numbers from a given string.
 
-Anybody who wanst to contribute , WELCOME ! :)
+Anybody who wants to contribute , WELCOME ! :)
